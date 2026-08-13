@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our 2nd Year Anniversary ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Confetti library CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.min.js"></script>
+  <style>
+    :root {
+      --bg-color: #0b090a;
+      --card-bg: rgba(22, 14, 18, 0.75);
+      --primary: #e63946;
+      --accent: #ffb703;
+      --rose-gold: #d4a373;
+      --blush: #ffccd5;
+      --text-main: #f8f9fa;
+      --text-muted: #d3d3d3;
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif, system-ui;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      background-image: radial-gradient(circle at 50% 20%, #3a111a 0%, var(--bg-color) 80%);
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding: 1rem;
+      background: rgba(11, 9, 10, 0.9);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(212, 163, 115, 0.2);
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.88rem;
+      transition: var(--transition);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--blush);
+      background: rgba(230, 57, 70, 0.2);
+      box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
+    }
+
+    /* Page Container & Fade-in */
+    .page-section {
+      display: none;
+      max-width: 950px;
+      width: 90%;
+      margin: 3rem auto;
+      flex: 1;
+      animation: fadeIn 0.8s ease-in-out forwards;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Buttons */
+    .btn-romantic {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--rose-gold));
+      color: white;
+      padding: 0.8rem 2.2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-romantic:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(230, 57, 70, 0.7);
+    }
+
+    /* Floating Hearts Background Animation */
+    .hearts-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: var(--primary);
+      transform: rotate(45deg);
+      animation: floatUp 6s linear infinite;
+      opacity: 0.3;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -7.5px; left: 0; }
+    .heart::after { left: -7.5px; top: 0; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) rotate(45deg) scale(0.6); opacity: 0; }
+      50% { opacity: 0.5; }
+      100% { transform: translateY(-10vh) rotate(45deg) scale(1.2); opacity: 0; }
+    }
+
+    /* Section Headings */
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--blush);
+      margin-bottom: 2.5rem;
+      text-shadow: 0 0 15px rgba(255, 204, 213, 0.2);
+    }
+
+    /* Page 1: Hero Styles */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--blush);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 25px rgba(255, 204, 213, 0.4);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(212, 163, 115, 0.15);
+      border: 1px solid var(--rose-gold);
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      color: var(--blush);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Page 2: Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid var(--rose-gold);
+      margin-left: 1rem;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      background: var(--card-bg);
+      padding: 1.8rem;
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 163, 115, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: var(--transition);
+    }
+    .timeline-item:hover {
+      transform: translateX(6px);
+      border-color: var(--primary);
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.62rem;
+      top: 1.8rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 12px var(--primary);
+    }
+    .timeline-date {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .timeline-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+    .timeline-item p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Page 3: Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.2rem;
+    }
+    .polaroid {
+      background: #fff;
+      padding: 14px 14px 28px 14px;
+      border-radius: 6px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+      transform: rotate(calc(-2deg + 4deg * var(--r, 0.5)));
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .polaroid:hover {
+      transform: scale(1.06) rotate(0deg);
+      z-index: 10;
+      box-shadow: 0 18px 45px rgba(230, 57, 70, 0.4);
+    }
+    .polaroid-img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      background: #eee;
+      border-radius: 4px;
+    }
+    .polaroid-caption {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      color: #2b1117;
+      margin-top: 1.1rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    /* Page 4: Reasons */
+    .reasons-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .reason-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 163, 115, 0.2);
+      border-radius: 14px;
+      padding: 1.8rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .reason-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(230, 57, 70, 0.25);
+    }
+    .reason-number {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+    }
+    .reason-text {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* Page 5: Love Letter */
+    .letter-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 163, 115, 0.3);
+      border-radius: 20px;
+      padding: 3.5rem 3rem;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+      position: relative;
+    }
+    .letter-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--blush);
+      margin-bottom: 1.8rem;
+      text-align: center;
+    }
+    .letter-body {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 2;
+      color: var(--text-main);
+      margin-bottom: 2.8rem;
+    }
+    .letter-body p {
+      margin-bottom: 1.8rem;
+    }
+    .signature {
+      text-align: right;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--rose-gold);
+    }
+    .celebration-box {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* Page 6: Future Bucket List */
+    .bucket-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .bucket-item {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 163, 115, 0.2);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+    }
+    .bucket-item:hover {
+      border-color: var(--rose-gold);
+      transform: translateX(4px);
+    }
+    .bucket-icon {
+      font-size: 2rem;
+      background: rgba(230, 57, 70, 0.15);
+      padding: 0.8rem;
+      border-radius: 12px;
+    }
+    .bucket-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--blush);
+      margin-bottom: 0.3rem;
+    }
+    .bucket-content p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Page 7: Playlist Vibe */
+    .playlist-container {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 163, 115, 0.25);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+    .vinyl-record {
+      width: 160px;
+      height: 160px;
+      background: #111;
+      border-radius: 50%;
+      margin: 0 auto 2rem auto;
+      border: 6px dashed var(--rose-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: spin 6s linear infinite;
+      box-shadow: 0 0 25px rgba(212, 163, 115, 0.3);
+    }
+    .vinyl-inner {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 50%;
+      border: 3px solid #fff;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .song-list {
+      list-style: none;
+      margin-top: 2rem;
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .song-item {
+      padding: 0.9rem 1.2rem;
+      margin-bottom: 0.8rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+    .song-item span { color: var(--rose-gold); font-size: 0.85rem; }
+
+    /* Page 8: Mini Quiz */
+    .quiz-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 163, 115, 0.3);
+      border-radius: 18px;
+      padding: 2.5rem;
+      backdrop-filter: blur(15px);
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .quiz-question {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--blush);
+      margin-bottom: 1.8rem;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .quiz-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 163, 115, 0.3);
+      color: var(--text-main);
+      padding: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: var(--transition);
+      font-family: 'Poppins', sans-serif;
+    }
+    .quiz-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    #quizResult {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .navbar { gap: 0.4rem; padding: 0.8rem; }
+      .nav-link { font-size: 0.78rem; padding: 0.3rem 0.5rem; }
+      .hero h1 { font-size: 2.8rem; }
+      .section-title { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts-bg" id="heartsContainer"></div>
+
+  <!-- Navigation Bar (8 Pages) -->
+  <nav class="navbar">
+    <a class="nav-link active" onclick="switchPage('home')">Home</a>
+    <a class="nav-link" onclick="switchPage('timeline')">Our Journey</a>
+    <a class="nav-link" onclick="switchPage('memories')">Gallery</a>
+    <a class="nav-link" onclick="switchPage('reasons')">Reasons</a>
+    <a class="nav-link" onclick="switchPage('letter')">Love Letter</a>
+    <a class="nav-link" onclick="switchPage('bucketlist')">Bucket List</a>
+    <a class="nav-link" onclick="switchPage('playlist')">Our Vibe</a>
+    <a class="nav-link" onclick="switchPage('quiz')">Mini Quiz</a>
+  </nav>
+
+  <!-- Page 1: Home -->
+  <section id="home" class="page-section active">
+    <div class="hero">
+      <div class="badge">✨ Celebrating 2 Magical Years ✨</div>
+      <h1>Forever Yours</h1>
+      <p>Two wonderful years of deep love, countless smiles, and endless adventures together.</p>
+      <button class="btn-romantic" onclick="switchPage('timeline')">Open Your Surprise ❤️</button>
+    </div>
+  </section>
+
+  <!-- Page 2: Our Journey (Timeline) -->
+  <section id="timeline" class="page-section">
+    <h2 class="section-title">Milestones of Our Love</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Where It All Began</div>
+        <h3>The Day We Met</h3>
+        <p>The moment our paths crossed and everything changed. A simple conversation sparked an incredible connection.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Our First Official Date</div>
+        <h3>Nerves & Butterflies</h3>
+        <p>Endless talking and laughing until our cheeks hurt. I knew right then you were someone deeply special.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Official Anniversary</div>
+        <h3>"Will You Be Mine?"</h3>
+        <p>The day we made it official. Two years of sharing dreams, overcoming challenges, and growing together.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Today & Forever</div>
+        <h3>Celebrating 2 Years</h3>
+        <p>Endlessly grateful for every single second by your side. Here's to a lifetime more of happiness.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 3: Gallery (Memories) -->
+  <section id="memories" class="page-section">
+    <h2 class="section-title">Moments We Cherish</h2>
+    <div class="gallery-grid">
+      <div class="polaroid" style="--r: 0.2;">
+        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" alt="Memory 1" class="polaroid-img">
+        <div class="polaroid-caption">Our First Adventure</div>
+      </div>
+      <div class="polaroid" style="--r: 0.8;">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Memory 2" class="polaroid-img">
+        <div class="polaroid-caption">Endless Laughter</div>
+      </div>
+      <div class="polaroid" style="--r: 0.4;">
+        <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=600&q=80" alt="Memory 3" class="polaroid-img">
+        <div class="polaroid-caption">Cozy Coffee Dates</div>
+      </div>
+      <div class="polaroid" style="--r: 0.7;">
+        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" alt="Memory 4" class="polaroid-img">
+        <div class="polaroid-caption">Sunset Magic</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 4: Reasons Why I Love You -->
+  <section id="reasons" class="page-section">
+    <h2 class="section-title">Things I Love About You</h2>
+    <p class="reasons-subtitle">A few reasons out of the millions in my heart.</p>
+    <div class="reasons-grid">
+      <div class="reason-card"><span class="reason-number">REASON 01</span><p class="reason-text">Your radiant smile that instantly brightens up my darkest days.</p></div>
+      <div class="reason-card"><span class="reason-number">REASON 02</span><p class="reason-text">The way you listen to me with genuine care and deep understanding.</p></div>
+      <div class="reason-card"><span class="reason-number">REASON 03</span><p class="reason-text">Your infectious laugh that is my absolute favorite sound in the world.</p></div>
+      <div class="reason-card"><span class="reason-number">REASON 04</span><p class="reason-text">How supportive you always are of my goals and big dreams.</p></div>
+      <div class="reason-card"><span class="reason-number">REASON 05</span><p class="reason-text">The comforting, warm feeling of holding your hand in mine.</p></div>
+      <div class="reason-card"><span class="reason-number">REASON 06</span><p class="reason-text">Simply because you are you—my greatest blessing and true love.</p></div>
+    </div>
+  </section>
+
+  <!-- Page 5: Love Letter & Celebration -->
+  <section id="letter" class="page-section">
+    <div class="letter-card">
+      <h2>My Dearest Love,</h2>
+      <div class="letter-body">
+        <p>As I sit down to write this, it's hard to believe that two whole years have flown by since we began this incredible journey together. Every single day with you feels like a gift I never knew I deserved.</p>
+        <p>Thank you for bringing so much brightness, unconditional love, and warmth into my world. Through every high and every challenge, you have been my rock and my safe haven.</p>
+        <p>Here is to celebrating 2 wonderful years of us—and to countless more adventures, laughs, and memories waiting to be written. I love you more than words can express.</p>
+      </div>
+      <div class="signature">Forever & Always Yours ❤️</div>
+    </div>
+    <div class="celebration-box">
+      <button class="btn-romantic" id="celebrateBtn">Celebrate Our 2 Years! 🎉</button>
+    </div>
+  </section>
+
+  <!-- Page 6: Future Bucket List -->
+  <section id="bucketlist" class="page-section">
+    <h2 class="section-title">Our Future Bucket List</h2>
+    <div class="bucket-grid">
+      <div class="bucket-item">
+        <div class="bucket-icon">✈️</div>
+        <div class="bucket-content">
+          <h3>Dream Vacation</h3>
+          <p>Travel to the mountains or a cozy beach house together.</p>
+        </div>
+      </div>
+      <div class="bucket-item">
+        <div class="bucket-icon">🍳</div>
+        <div class="bucket-content">
+          <h3>Cooking Masterclass</h3>
+          <p>Learn how to bake our favorite desserts from scratch.</p>
+        </div>
+      </div>
+      <div class="bucket-item">
+        <div class="bucket-icon">⛺</div>
+        <div class="bucket-content">
+          <h3>Stargazing Camp</h3>
+          <p>Spend a peaceful night under the open starry sky.</p>
+        </div>
+      </div>
+      <div class="bucket-item">
+        <div class="bucket-icon">🏡</div>
+        <div class="bucket-content">
+          <h3>Build Our Home</h3>
+          <p>Design a cozy, warm space filled with our shared memories.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 7: Playlist Vibe -->
+  <section id="playlist" class="page-section">
+    <h2 class="section-title">Our Soundtrack</h2>
+    <div class="playlist-container">
+      <div class="vinyl-record">
+        <div class="vinyl-inner"></div>
+      </div>
+      <h3 style="font-family: 'Playfair Display', serif; color: var(--blush); font-size: 1.5rem; margin-bottom: 0.5rem;">Songs That Remind Me of You</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">The melodies that play in my heart every time I think of us.</p>
+      
+      <ul class="song-list">
+        <li class="song-item">Our First Dance Song <span>3:45</span></li>
+        <li class="song-item">Late Night Drive Melody <span>4:12</span></li>
+        <li class="song-item">The Tune of Our First Date <span>3:20</span></li>
+        <li class="song-item">Forever Theme Song <span>5:01</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Page 8: Mini Quiz -->
+  <section id="quiz" class="page-section">
+    <h2 class="section-title">How Well Do You Know Us?</h2>
+    <div class="quiz-card">
+      <div class="quiz-question" id="quizQuestion">Where was our very first date?</div>
+      <div class="quiz-options" id="quizOptions">
+        <button class="quiz-btn" onclick="checkAnswer(false)">A cozy coffee shop downtown</button>
+        <button class="quiz-btn" onclick="checkAnswer(true)">A quiet rooftop café with a view</button>
+        <button class="quiz-btn" onclick="checkAnswer(false)">A busy street food market</button>
+      </div>
+      <div id="quizResult"></div>
+    </div>
+  </section>
+
+  <script>
+    // Single-page navigation switcher
+    function switchPage(pageId) {
+      const sections = document.querySelectorAll('.page-section');
+      sections.forEach(sec => sec.classList.remove('active'));
+
+      const target = document.getElementById(pageId);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      const links = document.querySelectorAll('.nav-link');
+      links.forEach(link => link.classList.remove('active'));
+      
+      event && event.target && event.target.classList.add('active');
+    }
+
+    // Quiz evaluation
+    function checkAnswer(isCorrect) {
+      const resultEl = document.getElementById('quizResult');
+      if (isCorrect) {
+        resultEl.style.color = 'var(--blush)';
+        resultEl.textContent = "Correct! You remember every special detail. ❤️";
+        confetti({ particleCount: 60, spread: 50, origin: { y: 0.7 } });
+      } else {
+        resultEl.style.color = '#e63946';
+        resultEl.textContent = "Close, but try another choice my love! 😉";
+      }
+    }
+
+    // Confetti trigger
+    document.getElementById('celebrateBtn').addEventListener('click', () => {
+      confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.6 },
+        colors: ['#e63946', '#ffb703', '#ffccd5', '#d4a373']
+      });
+    });
+
+    // Floating hearts background generator
+    const container = document.getElementById('heartsContainer');
+    for (let i = 0; i < 22; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.top = `${Math.random() * 100}vh`;
+      heart.style.animationDuration = `${5 + Math.random() * 4}s`;
+      container.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
